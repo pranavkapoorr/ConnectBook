@@ -67,7 +67,7 @@ import org.springframework.transaction.annotation.Transactional;
 		  return userDao.getPostByPostedBy(postedBy);
 	   }
            @Transactional
-	   public List<Posts> getPostbyPostedTo(int postedTo) {
+	   public List getPostbyPostedTo(int postedTo) {
 		  return userDao.getPostByPostedTo(postedTo);
 	   }
 }
