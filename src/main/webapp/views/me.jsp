@@ -180,7 +180,7 @@
                     </a>
                   </div>
                   <div class="media-body">
-                      <a class="media-heading title-post" href="/home" >{{x[0]}}</a>
+                      <a class="media-heading title-post" href="/{{x[5]}}" >{{x[0]}}</a>
                     <h5 class="time-post">{{x[3]}} minutes ago</h5>
                   </div>
                 </div>

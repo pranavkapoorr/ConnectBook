@@ -107,7 +107,7 @@ public class DAO {
          return  query.getResultList();
 	}
   public List<Object> getPostByPostedTo(int postedTo) {
-         Query query = manager.createQuery("select u.name,u.dp,p.post,p.postTime,p.postPic from connectbook.Entity.Posts p , connectbook.Entity.Users u where p.postedBy = u.id and p.postedTo = :postedTo");
+         Query query = manager.createQuery("select u.name,u.dp,p.post,p.postTime,p.postPic,u.username from connectbook.Entity.Posts p , connectbook.Entity.Users u where p.postedBy = u.id and p.postedTo = :postedTo");
          query.setParameter("postedTo", postedTo);
          return  query.getResultList();
 	}
