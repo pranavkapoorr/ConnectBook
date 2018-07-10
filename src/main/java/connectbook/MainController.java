@@ -31,15 +31,13 @@ import org.springframework.web.servlet.ModelAndView;
 //@Scope("session")
 public class MainController {
     private Services Service;
-    private final HashMap cache;
-    private String otherUser = null;
+    private Users otherUser = null;
 	@Autowired
 	public void setContactServices(Services services){
 		this.Service = services;
 	}
 
     public MainController() {
-       cache = new HashMap();
     }
  
     @RequestMapping(value="/",method = RequestMethod.GET)
@@ -49,16 +47,19 @@ public class MainController {
     
     @RequestMapping(value="/myTimeLine",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-     public List<Posts> myTimeline(HttpSession session) {
-        String userId = cache.get(session.getAttribute("username")).toString();
-        return Service.getPostbyPostedTo(Integer.parseInt(userId));
+     public List myTimeline(HttpSession session) {
+    	List list = null;
+    	String username = session.getAttribute("username").toString();
+        Users user = Service.getUser(username);
+        list = Service.getPostbyPostedTo(user.getId());
+        return list;
      }
      
       @RequestMapping(value="/oTimeLine",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
      public List<Posts> oTimeline() {
-        String userId = cache.get(otherUser).toString();
-        return Service.getPostbyPostedTo(Integer.parseInt(userId));
+        Users userO = otherUser;
+        return Service.getPostbyPostedTo((userO.getId()));
      }
        @RequestMapping(value="/logout",method = RequestMethod.GET)
      public ModelAndView logout(HttpSession session) {
@@ -70,11 +71,10 @@ public class MainController {
      @RequestMapping(value="/enter", method = RequestMethod.POST)
      public String enter(HttpSession session, @RequestParam(value="username")String uname,@RequestParam(value = "password")String password) {
         String fallback = "login";
-         if(Service.getUser(uname)!=null){
-            Users user = Service.getUser(uname);
+        Users user = Service.getUser(uname);
+         if(user!=null){
             if(user.getPassword().equals(password)){
                 session.setAttribute("username", uname);
-                cache.put(uname, user.getId());
                 fallback = "redirect:/home";
             }
         }
@@ -98,9 +98,11 @@ public class MainController {
      
      @RequestMapping(value="/{uname}")
      public ModelAndView otherPage(HttpSession session,@PathVariable("uname")String uname ) {
-         if(session.getAttribute("username")!=null){
-            otherUser = uname;
+         if(session.getAttribute("username")!=null && uname != null &&
+        		 (!uname.contains("{") && !uname.contains("}") && !uname.contains("]") && !uname.contains("["))){
+
             Users user = Service.getUser(uname);
+            otherUser = user;
             ModelMap model = new ModelMap();
             model.addAttribute("name",user.getName());
             model.addAttribute("dp",user.getDp());
@@ -114,8 +116,9 @@ public class MainController {
      
      @RequestMapping(value="/findUser", method = RequestMethod.POST)
      @ResponseBody
-     public List showUsersbyUsername(@RequestParam(value="uname")String uname) {
-        return Service.getUsers(uname);
+     public List<Users> showUsersbyUsername(@RequestParam(value="uname")String uname) {
+    	 List<Users> tempList = Service.getUsers(uname);
+        return tempList;
      }
      
    /* @RequestMapping(value="/statusMessage", produces = MediaType.TEXT_PLAIN_VALUE)

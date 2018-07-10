@@ -15,6 +15,7 @@ import connectbook.Entity.Users;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
@@ -57,9 +58,15 @@ public class DAO {
 	  else{System.out.println("No such user exists");}
     }
     public Users getUserByUsername(String username) {
+    	Users user = null;
          Query query = manager.createQuery("from Users where username = :uname", Users.class);
          query.setParameter("uname", username);
-         return (Users) query.getSingleResult();
+         try{
+        	 user = (Users) query.getSingleResult();
+         }catch(NoResultException e){
+        	 System.err.println(e.getMessage());
+         }
+         return user;
 	}
     public List getUsersByUsername(String username) {
          Query query = manager.createQuery("from Users where username Like :uname", Users.class);

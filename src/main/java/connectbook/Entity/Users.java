@@ -30,13 +30,6 @@ private String dob;
 @Column(name="email")
 private String email;
 
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
 @Column(name="dp")
 private String dp;
 @Column(name="cover")
@@ -94,6 +87,13 @@ private String password;
         this.dp = dp;
     }
 
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
     public String getUsername() {
         return username;
     }
