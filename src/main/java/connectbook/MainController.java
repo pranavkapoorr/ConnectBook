@@ -76,6 +76,14 @@ public class MainController {
            list = Service.getConnectionsById(user.getId());
            return list;
         }
+       @RequestMapping(value="/oFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+       @ResponseBody
+        public List oFriendz() {
+    	   List list = null;
+           Users user = otherUser;
+           list = Service.getConnectionsById(user.getId());
+           return list;
+        }
        
      
      @RequestMapping(value="/enter", method = RequestMethod.POST)

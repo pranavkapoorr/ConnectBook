@@ -33,6 +33,14 @@
                 }, function myError(response) {
              $scope.timeline = response.statusText;          
                  });
+         $http({
+             method : "POST",
+             url : "/oFriendz/"
+            }).then(function mySuccess(response) {
+                $scope.friendz = response.data;
+                }, function myError(response) {
+             $scope.friendz = response.statusText;          
+                 });
      
   //},10000);
   });
@@ -95,11 +103,12 @@
               <img src="${cover}" class="img-responsive" style="width:100%;height:300px;background: #269abc;"/>
               
               <ul class="nav nav-pills nav-grand-profile">
-                  <li role="presentation" class="active"><a href="#">Biografy</a></li>
-                  <li role="presentation"><a href="#">Information</a></li>
-                  <li role="presentation"><a href="#">Friends</a></li>
-                  <li role="presentation"><a href="#">Pictures</a></li>
-              </ul>
+					<li role="presentation" class="active"><a data-toggle="tab"
+						href="#timeline">Biografy</a></li>
+					<li role="presentation"><a data-toggle="tab" href="#">Information</a></li>
+					<li role="presentation"><a data-toggle="tab" href="#friends">Friends</a></li>
+					<li role="presentation"><a data-toggle="tab" href="#">Pictures</a></li>
+				</ul>
             </div>    
         </div>
         
@@ -112,10 +121,11 @@
             </div>
         </aside>
         
-              
+        
         <!--timeline-->
         <section class="timeline col-sm-9" >
-            
+           <div class="tab-content">
+			<div id="timeline" class="tab-pane fade in active"> 
             <div id="statusdiv" class='thumbnail thumbnail-post'>
             <!--caption-->
             <div class='caption'>
@@ -180,6 +190,32 @@
                 <span class="fa fa-comment link-post"></span><a href="#" class="link-post" role="button">Comment</a> 
                 <span class="fa fa-reply link-post"></span><a href="#" class="link-post" role="button">Share</a> 
             </div>
+        </div>
+        </div>
+        <div id="friends" class="tab-pane fade">
+				<div class="thumbnail row">
+					<div class="thumbnail thumbnail-post col-sm-7" ng-repeat="x in friendz">
+						<div class="caption">
+							<div class="media">
+								<div class="media-left">
+									<a href="/{{x[2]}}" class="image-post"> <img ng-if="x[1] != ''"
+										src="{{x[1]}}" style="width: 50px; height: 50px" />
+									</a>
+								</div>
+								<div class="media-body">
+								<h5></h5>
+									<a class="media-heading title-post" href="/{{x[2]}}">{{x[0]}}</a>
+								</div>
+								<div class="media-right" >
+									<h5></h5>
+									<Button>Friends</Button>
+								</div>
+							</div>
+						</div>
+						<!--#caption-->
+					</div>
+					</div>
+					</div>
         </div>
              
         <!--#post timeline-->
