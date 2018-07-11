@@ -265,7 +265,7 @@
 								<h5></h5>
 									<a class="media-heading title-post" href="/{{x[2]}}">{{x[0]}}</a>
 								</div>
-								<div class="media-right">
+								<div class="media-right" >
 									<h5></h5>
 									<Button>Friends</Button>
 								</div>
