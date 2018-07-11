@@ -91,7 +91,7 @@
         
         <div class="col-sm-12">
             <div class="thumbnail thumbnail-grand-profile">
-                <div class="caption caption-grand-profile"><img class="caption img-thumbnail" src="${dp}"/><h3 class="title-grand-profile" >${name}</h3></div>
+                <div class="caption caption-grand-profile"><img class="caption img-thumbnail" src="${dp}" style="width: 240px; height: 240px;"/><h3 class="title-grand-profile" >${name}</h3></div>
               <img src="${cover}" class="img-responsive" style="width:100%;height:300px;background: #269abc;"/>
               
               <ul class="nav nav-pills nav-grand-profile">

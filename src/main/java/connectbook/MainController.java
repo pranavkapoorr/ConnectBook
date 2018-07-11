@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     private Services Service;
     private Users otherUser = null;
+    private Users currentUser = null;
 	@Autowired
 	public void setContactServices(Services services){
 		this.Service = services;
@@ -50,23 +51,32 @@ public class MainController {
      public List myTimeline(HttpSession session) {
     	List list = null;
     	String username = session.getAttribute("username").toString();
-        Users user = Service.getUser(username);
+        Users user = !username.equals(null)?currentUser:null;
         list = Service.getPostbyPostedTo(user.getId());
         return list;
      }
      
-      @RequestMapping(value="/oTimeLine",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/oTimeLine",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
      public List<Posts> oTimeline() {
         Users userO = otherUser;
         return Service.getPostbyPostedTo((userO.getId()));
      }
-       @RequestMapping(value="/logout",method = RequestMethod.GET)
+     @RequestMapping(value="/logout",method = RequestMethod.GET)
      public ModelAndView logout(HttpSession session) {
          session.invalidate();
         return new ModelAndView("login");
      }
-   
+     
+       @RequestMapping(value="/myFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+       @ResponseBody
+        public List myFriendz() {
+    	   List list = null;
+           Users user = currentUser;
+           list = Service.getConnectionsById(user.getId());
+           return list;
+        }
+       
      
      @RequestMapping(value="/enter", method = RequestMethod.POST)
      public String enter(HttpSession session, @RequestParam(value="username")String uname,@RequestParam(value = "password")String password) {
@@ -74,6 +84,7 @@ public class MainController {
         Users user = Service.getUser(uname);
          if(user!=null){
             if(user.getPassword().equals(password)){
+            	currentUser = user;
                 session.setAttribute("username", uname);
                 fallback = "redirect:/home";
             }
@@ -83,8 +94,8 @@ public class MainController {
      @RequestMapping(value="/home")
      public ModelAndView myPage(HttpSession session ) {
          if(session.getAttribute("username")!=null){
-            String username = session.getAttribute("username").toString();
-            Users user = Service.getUser(username);
+            //String username = session.getAttribute("username").toString();
+            Users user = currentUser;/*Service.getUser(username);*/
             ModelMap model = new ModelMap();
             model.addAttribute("name",user.getName());
             model.addAttribute("dp",user.getDp());
