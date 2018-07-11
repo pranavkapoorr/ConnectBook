@@ -166,8 +166,8 @@
 					<div id="statusdiv" class='thumbnail thumbnail-post'>
 						<!--caption-->
 						<div class='caption'>
-
 							<div class="panel panel-heading"></div>
+							<form action="/postStatus" method="POST">
 							<div class='media'>
 								<div class='media-left'>
 									<a href='/home' class='image-post'> <img
@@ -176,7 +176,7 @@
 								</div>
 								<div class='media-body'>
 									<p>
-										<textarea class="statusboxmagic" cols="60" name="statusbox"
+										<textarea class="statusboxmagic" cols="60" name="status"
 											id="statusbox" style="height: 62px; overflow: hidden;"
 											placeholder="What's on your mind ?"></textarea>
 									</p>
@@ -208,12 +208,13 @@
 												<option value="1" selected="selected">Public</option>
 												<option value="2">Only my friends</option>
 												<option value="3">Only me</option>
-											</select> &nbsp; <input type="button" class='btn btn-primary'
+											</select> &nbsp; <input type="submit" class='btn btn-primary'
 												style="height: 30px" id="poststatus" value="Post">
 										</div>
 									</div>
 								</div>
 							</div>
+							</form>
 						</div>
 						<!--#caption-->
 					</div>

@@ -12,6 +12,9 @@ package connectbook;
  */
 import connectbook.Entity.Posts;
 import connectbook.Entity.Users;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -66,6 +69,25 @@ public class MainController {
      public ModelAndView logout(HttpSession session) {
          session.invalidate();
         return new ModelAndView("login");
+     }
+     
+     private String getCurrentTime(){
+    	 String time = null;
+    	 LocalDateTime lTime = LocalDateTime.now();
+    	 time = lTime.getDayOfMonth()+"/"+lTime.getMonth()+"/"+lTime.getYear()+":"+lTime.getHour()+":"+lTime.getMinute()+lTime.getSecond();
+    	 return time;
+     }
+     @RequestMapping(value="/postStatus",method = RequestMethod.POST)
+     public String postStatus(HttpSession session,@RequestParam(value="status")String post) {
+    	 Posts tempPost = new Posts();
+    	 tempPost.setPost(post);
+    	 tempPost.setPostedBy(currentUser.getId());
+    	 tempPost.setPostedTo(currentUser.getId());
+    	 tempPost.setPostPic("");
+    	 tempPost.setPostTime(getCurrentTime());
+    	 	Service.addPost(tempPost);
+    	 	tempPost=null;
+    	  return "redirect:/home";
      }
      
        @RequestMapping(value="/myFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
