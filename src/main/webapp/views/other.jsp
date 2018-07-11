@@ -104,7 +104,7 @@
               
               <ul class="nav nav-pills nav-grand-profile">
 					<li role="presentation" class="active"><a data-toggle="tab"
-						href="#timeline">Biografy</a></li>
+						href="#timeline">Wall</a></li>
 					<li role="presentation"><a data-toggle="tab" href="#">Information</a></li>
 					<li role="presentation"><a data-toggle="tab" href="#friends">Friends</a></li>
 					<li role="presentation"><a data-toggle="tab" href="#">Pictures</a></li>
