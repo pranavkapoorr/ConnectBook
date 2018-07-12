@@ -102,6 +102,15 @@ public class MainController {
     	  return "redirect:/"+otherUser.getUsername();
      }
      
+     @RequestMapping(value="/messenger",method = RequestMethod.GET)
+     public String messenger(HttpSession session) {
+    	 if(session.getAttribute("username")!=null){
+    		 return "messenger";
+    	  }else{
+    		  return "login";
+    	  }
+     }
+     
        @RequestMapping(value="/myFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
        @ResponseBody
         public List myFriendz() {
