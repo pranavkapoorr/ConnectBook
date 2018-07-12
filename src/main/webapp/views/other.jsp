@@ -130,8 +130,8 @@
             <!--caption-->
             <div class='caption'>
                 
-                <div class="panel panel-heading">
-                </div>
+                <div class="panel panel-heading"></div>
+                <form action="/postother" method="POST">
                 <div class='media'>
                   <div class='media-left'>
                     <a href='/home' class='image-post'>
@@ -139,7 +139,7 @@
                     </a>
                   </div>
                   <div class='media-body'>
-                     <p> <textarea class="statusboxmagic" cols="60" name="statusbox" id="statusbox" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?" ></textarea></p>
+                     <p> <textarea class="statusboxmagic" cols="60" name="status" id="statusbox" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?" ></textarea></p>
                   </div></div><div class="panel panel-heading">
                 </div>
                      <div class="media-bottom">
@@ -148,7 +148,6 @@
 			<div class="col-md-6">
 			<div class="form-group">
 			<div class="btn-group">
-                           <button id="checkin" type="button" class="btn btn-default"><span class="fa fa-map-marker"></span> Location</button>
                            <label for="photochoose" type="button" class="btn btn-default"><input id="photochoose" type="file" style="display: none"><span class="fa fa-picture-o"></span> Photo</label>
                            <p id="loc"></p><div id="map" style="width:500px;height:500px" hidden=""></div></div></div></div>
 				<div class="col-md-6">
@@ -158,8 +157,9 @@
 				<option value="2">Only my friends</option>
 					<option value="3">Only me</option>
                                 </select>
-                                    &nbsp; <input type="button" class='btn btn-primary' style="height:30px " id="poststatus" value="Post">                               
+                                    &nbsp; <input type="submit" class='btn btn-primary' style="height:30px " id="poststatus" value="Post">                               
 				</div></div></div></div> 
+				</form>
             </div><!--#caption-->
         </div>
             

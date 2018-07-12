@@ -89,6 +89,18 @@ public class MainController {
     	 	tempPost=null;
     	  return "redirect:/home";
      }
+     @RequestMapping(value="/postother",method = RequestMethod.POST)
+     public String postOnOthersWall(HttpSession session,@RequestParam(value="status")String post) {
+    	 Posts tempPost = new Posts();
+    	 tempPost.setPost(post);
+    	 tempPost.setPostedBy(currentUser.getId());
+    	 tempPost.setPostedTo(otherUser.getId());
+    	 tempPost.setPostPic("");
+    	 tempPost.setPostTime(getCurrentTime());
+    	 	Service.addPost(tempPost);
+    	 	tempPost=null;
+    	  return "redirect:/"+otherUser.getUsername();
+     }
      
        @RequestMapping(value="/myFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
        @ResponseBody
