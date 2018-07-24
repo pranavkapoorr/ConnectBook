@@ -48,7 +48,7 @@
 
 .chat__bubble {
   margin-bottom: 3px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   clear: both;
   border-radius: 10px 10px 2px 2px ;
 }
@@ -147,7 +147,7 @@
 	</nav>
 <div class="container">
 <div class="row">
-<div class="col-sm-4 thumbnail ">
+<div class="col-xs-4 thumbnail ">
 <ul class="nav nav-pills nav-stacked">
   <li class="active"><a data-toggle="pill" href="#home">Menu 1</a></li>
   <li><a data-toggle="pill" href="#home1">Menu 2</a></li>
@@ -156,9 +156,9 @@
 </ul>
 </div>
 
-<div class="col-sm-1"></div>
+<div class="col-xs-1"></div>
 
-<div class="col-sm-7 thumbnail">
+<div class="col-xs-7 thumbnail">
 <div class="tab-content">
 <div id="home" class="tab-pane fade in active">
 <ul class="chat">
