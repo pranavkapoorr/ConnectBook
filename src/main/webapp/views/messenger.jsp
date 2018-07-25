@@ -45,7 +45,14 @@
   list-style-type: none;
   width: 100%;
 }
-
+html, body, .container, .row {
+    height:100%;
+}
+.col-xs-3 ,.col-xs-6{
+	overflow:auto;
+    border: 1px solid black;
+    height: 100vh;
+}
 .chat__bubble {
   margin-bottom: 3px;
   padding: 5px 5px;
@@ -145,23 +152,61 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-<div class="container">
 <div class="row">
-<div class="col-xs-4 thumbnail ">
-<ul class="nav nav-pills nav-stacked">
-  <li class="active"><a data-toggle="pill" href="#home">Menu 1</a></li>
-  <li><a data-toggle="pill" href="#home1">Menu 2</a></li>
-  <li><a data-toggle="pill" href="#home2">Menu 3</a></li>
-  <li><a data-toggle="pill" href="#home3">Menu 3</a></li>
+<div class="col-xs-3 thumbnail ">
+<ul class="nav nav-pills nav-stacked list-group">
+  <li class="active list-group-item"><a data-toggle="pill" href="#home">Menu 1</a></li>
+  <li class="list-group-item"><a data-toggle="pill" href="#home1">Menu 2</a></li>
+  <li class="list-group-item"><a data-toggle="pill" href="#home2">Menu 3</a></li>
+  <li class="list-group-item"><a data-toggle="pill" href="#home3">Menu 3</a></li>
 </ul>
 </div>
 
-<div class="col-xs-1"></div>
 
-<div class="col-xs-7 thumbnail">
-<div class="tab-content">
-<div id="home" class="tab-pane fade in active">
+<div class="col-xs-6 thumbnail">
+<div class="tab-content"  >
+<div id="home" class="tab-pane fade in active"  >
 <ul class="chat">
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
+ <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
+ <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
+ <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
+ <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
+ <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
  <li class="chat__bubble chat__bubble--sent">Not much.</li>
  <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
@@ -210,7 +255,6 @@
  <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
 </ul>
-</div>
 </div>
 </div>
 </div>
