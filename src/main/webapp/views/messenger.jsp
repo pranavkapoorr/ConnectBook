@@ -167,8 +167,8 @@ html, body,{
 
 <div class="col-xs-6 thumbnail scrollable">
 <div class="tab-content"  >
-<div id="home" class="tab-pane fade in active"  >
-<div class="list-group-item disabled"><center><h4>Name</h4></center></div>
+<div id="home" class="tab-pane fade in active" >
+<div class="list-group-item disabled"><center><p><h4>Name</h4></p></center></div>
 <ul class="chat">
  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
  <li class="chat__bubble chat__bubble--sent">Not much.</li>
