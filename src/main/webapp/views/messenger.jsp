@@ -154,21 +154,24 @@ html, body,{
 	</nav>
 	<div class="container">
 <div class="row">
-<div class="col-xs-3 thumbnail scrollable">
+<div class="col-xs-3 thumbnail">
+<div class="disabled list-group-item"><center><h4>Messenger</h4></center></div>
+<div class="scrollable">
 <ul class="nav nav-pills nav-stacked list-group">
-<li class="disabled list-group-item"><a data-toggle="pill" href="#"><center><h4>Messenger</h4></center></a></li>
   <li class="active list-group-item"><a data-toggle="pill" href="#home">Menu 1</a></li>
   <li class="list-group-item"><a data-toggle="pill" href="#home1">Menu 2</a></li>
   <li class="list-group-item"><a data-toggle="pill" href="#home2">Menu 3</a></li>
   <li class="list-group-item"><a data-toggle="pill" href="#home3">Menu 3</a></li>
 </ul>
 </div>
+</div>
 
 
-<div class="col-xs-6 thumbnail scrollable">
+<div class="col-xs-6 thumbnail">
+<div class="list-group-item disabled"><center><p><h4>Name</h4></p></center></div>
+<div class="scrollable">
 <div class="tab-content"  >
 <div id="home" class="tab-pane fade in active" >
-<div class="list-group-item disabled"><center><p><h4>Name</h4></p></center></div>
 <ul class="chat">
  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
  <li class="chat__bubble chat__bubble--sent">Not much.</li>
@@ -258,6 +261,7 @@ html, body,{
  <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
  <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
 </ul>
+</div>
 </div>
 </div>
 </div>
