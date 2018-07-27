@@ -6,6 +6,7 @@
 package connectbook;
 
 import connectbook.Entity.Connections;
+import connectbook.Entity.Message;
 
 /**
  *
@@ -136,6 +137,28 @@ public class DAO {
 		query.setParameter("id", id);
 		list_Connections = query.getResultList();
 		return list_Connections;
+	}
+	public void createMessage(Message message){           
+		manager.persist(message);  
+	}  
+	public Message getMessageById(int id) {
+		return manager.find(Message.class, id);
+	}
+	public void removeMessage(int id){           
+		Message msg = getMessageById(id);  
+		manager.remove(msg);  
+	}  
+	public List<Message> listMessages(){             
+		List<Message> list_Messages =(List<Message>)manager.createQuery("From Message",Message.class).getResultList();
+		return list_Messages;
+	}
+	
+	public List getMessagesById(int id){
+		List list_Messages;
+		Query query = manager.createQuery("select u.name,u.dp,u.username,m.message from connectbook.Entity.Message m , connectbook.Entity.Users u where u.id = m.msgFrom and m.msgTo = :id or u.id = m.msgTo and m.msgFrom = :id");
+		query.setParameter("id", id);
+		list_Messages = query.getResultList();
+		return list_Messages;
 	}
 
 }

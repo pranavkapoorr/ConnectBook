@@ -20,60 +20,64 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class Services  {
 	@Autowired
-	private DAO userDao;
+	private DAO dao;
 
 	@Transactional
 	public void addUser(Users PK) {
-		userDao.createUser(PK);
+		dao.createUser(PK);
 	}
 	@Transactional
 	public void updateUser(Users user) {
-		userDao.updateUser(user);
+		dao.updateUser(user);
 	}
 	@Transactional
 	public void removeUser(int id) {
-		userDao.removeUser(id);
+		dao.removeUser(id);
 	}
 	@Transactional
 	public List<Users> listUsers() {
-		return userDao.listUsers();
+		return dao.listUsers();
 	}
 	@Transactional
 	public Users getUser(String username) {
-		return userDao.getUserByUsername(username);
+		return dao.getUserByUsername(username);
 	}
 	@Transactional
 	public List getUsers(String username) {
-		return userDao.getUsersByUsername(username);
+		return dao.getUsersByUsername(username);
 	}
 	@Transactional
 	public void addPost(Posts post) {
-		userDao.createPost(post);
+		dao.createPost(post);
 	}
 	@Transactional
 	public void updatePost(Posts post) {
-		userDao.updatePost(post);
+		dao.updatePost(post);
 	}
 	@Transactional
 	public void removePost(int id) {
-		userDao.removePost(id);
+		dao.removePost(id);
 	}
 	@Transactional
 	public List<Posts> listPosts() {
-		return userDao.listPosts();
+		return dao.listPosts();
 	}
 	@Transactional
 	public List<Posts> getPostbyPostedBy(int postedBy) {
-		return userDao.getPostByPostedBy(postedBy);
+		return dao.getPostByPostedBy(postedBy);
 	}
 	@Transactional
 	public List getPostbyPostedTo(int postedTo) {
-		return userDao.getPostByPostedTo(postedTo);
+		return dao.getPostByPostedTo(postedTo);
 	}
 
 	@Transactional
 	public List getConnectionsById(int id) {
-		return userDao.getConnectionsById(id);
+		return dao.getConnectionsById(id);
+	}
+	@Transactional
+	public List getMessagesById(int id) {
+		return dao.getMessagesById(id);
 	}
 
 }
