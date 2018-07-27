@@ -164,11 +164,11 @@ html, body,{
 <div class="col-xs-3 thumbnail">
 <div class="disabled list-group-item"><center><h4>Messenger</h4></center></div>
 <div class="scrollable">
-<ul class="nav nav-pills nav-stacked list-group">
-  <li class="active list-group-item"><a data-toggle="pill" href="#home">Menu 1</a></li>
-  <li class="list-group-item"><a data-toggle="pill" href="#home1">Menu 2</a></li>
-  <li class="list-group-item"><a data-toggle="pill" href="#home2">Menu 3</a></li>
-  <li class="list-group-item"><a data-toggle="pill" href="#home3">Menu 3</a></li>
+<ul class="nav  nav-stacked list-group">
+  <li class="list-group-item-heading active"><a data-toggle="pill" href="#home">Menu 1</a></li>
+  <li class="list-group-item-heading"><a data-toggle="pill" href="#home1">Menu 2</a></li>
+  <li class="list-group-item-heading"><a data-toggle="pill" href="#home2">Menu 3</a></li>
+  <li class="list-group-item-heading"><a data-toggle="pill" href="#home3">Menu 3</a></li>
 </ul>
 </div>
 </div>
@@ -278,7 +278,7 @@ html, body,{
 <div class="disabled list-group-item"><center><h4>Messenger</h4></center></div>
 <div class="scrollable">
 <ul class="nav nav-pills nav-stacked list-group">
-  <li class="list-group-item" ng-repeat="x in messages"><a data-toggle="pill   href="#home">{{x[0]}}</a></li>
+  <li class="list-group-item-heading" ng-repeat="x in messages"><a data-toggle="pill   href="#home">{{x[0]}}</a></li>
 </ul>
 </div>
 </div>
