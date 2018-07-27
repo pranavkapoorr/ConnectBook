@@ -24,7 +24,14 @@
     var App = angular.module('appX', []);
 		// create angular controller and pass in $scope and $http
     App.controller("controllerX", function($scope,$interval,$http) {
-        
+    	$http({
+            method : "POST",
+            url : "/myMessenger/"
+           }).then(function mySuccess(response) {
+               $scope.messages = response.data;
+               }, function myError(response) {
+            $scope.messages = response.statusText;          
+                });
           $scope.form={};
         $scope.findX = function(data){
             $http({
@@ -265,6 +272,19 @@ html, body,{
 </div>
 </div>
 </div>
+</div>
+<div class="row">
+<div class="col-xs-3 thumbnail">
+<div class="disabled list-group-item"><center><h4>Messenger</h4></center></div>
+<div class="scrollable">
+<ul class="nav nav-pills nav-stacked list-group">
+  <li class="list-group-item" ng-repeat="x in messages"><a data-toggle="pill   href="#home">{{x[0]}}</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row thumbnail" ng-repeat="x in messages">
+<p>{{x[0]}} {{x[1]}} {{x[2]}} {{x[3]}} {{x[4]}}</p>
 </div>
 </div>
 </body>

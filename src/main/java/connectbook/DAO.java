@@ -155,7 +155,7 @@ public class DAO {
 	
 	public List getMessagesById(int id){
 		List list_Messages;
-		Query query = manager.createQuery("select u.name,u.dp,u.username,m.message from connectbook.Entity.Message m , connectbook.Entity.Users u where u.id = m.msgFrom and m.msgTo = :id or u.id = m.msgTo and m.msgFrom = :id");
+		Query query = manager.createQuery("select u.name,u.dp,u.username,m.msg, m.msgTo from connectbook.Entity.Message m , connectbook.Entity.Users u where u.id = m.msgBy and m.msgTo = :id or u.id = m.msgTo and m.msgBy = :id");
 		query.setParameter("id", id);
 		list_Messages = query.getResultList();
 		return list_Messages;

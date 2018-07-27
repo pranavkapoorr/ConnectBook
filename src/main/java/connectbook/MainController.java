@@ -111,7 +111,7 @@ public class MainController {
     		  return "login";
     	  }
      }
-     @RequestMapping(value="/mymessenger",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @RequestMapping(value="/myMessenger",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody
      public List myMessages(HttpSession session) {
     	 if(session.getAttribute("username")!=null){
