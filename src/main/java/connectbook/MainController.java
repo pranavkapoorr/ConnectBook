@@ -111,6 +111,18 @@ public class MainController {
     		  return "login";
     	  }
      }
+     @RequestMapping(value="/mymessenger",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @ResponseBody
+     public List myMessages(HttpSession session) {
+    	 if(session.getAttribute("username")!=null){
+    		 List list = null;
+             Users user = currentUser;
+             list = Service.getMessagesById(user.getId());
+             return list;
+    	  }else{
+    		  return null;
+    	  }
+     }
      
        @RequestMapping(value="/myFriendz",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
        @ResponseBody
