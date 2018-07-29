@@ -29,6 +29,7 @@
             url : "/myMessenger/"
            }).then(function mySuccess(response) {
                $scope.messages = response.data;
+               $scope.senders = response.data;
                }, function myError(response) {
             $scope.messages = response.statusText;          
                 });
@@ -360,222 +361,25 @@ body{
         <div class="col-sm-3 col-xs-12">
           <div class="col-inside-lg decor-default chat" style="overflow: auto; outline: none;" tabindex="5000">
             <div class="chat-users">
-              <h6>Online</h6>
-                <div class="user">
+              <h6>Messenger</h6>
+                <div class="user" ng-repeat="x in messages" >
+                	<div data-toggle="tab" data-target="{{'#' + x[2]}}">
                     <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                    <img src="{{x[1]}}" alt="User name">
                     <div class="status online"></div>
                     </div>
-                    <div class="name">User name</div>
+                    <div class="name">{{x[0]}}</div>
                     <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User name">
-                    <div class="status busy"></div>
                     </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User name">
-                    <div class="status online"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                    <div class="status busy"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User name">
-                    <div class="status online"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User name">
-                    <div class="status busy"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
-                    <div class="status online"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User name">
-                    <div class="status busy"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User name">
-                    <div class="status online"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User name">
-                    <div class="status busy"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User name">
-                    <div class="status online"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User name">
-                    <div class="status busy"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User name">
-                    <div class="status offline"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User name">
-                    <div class="status off"></div>
-                    </div>
-                    <div class="name">User name</div>
-                    <div class="mood">User mood</div>
                 </div>
             </div>
           </div>
         </div>
         <div class="col-sm-9 col-xs-12 chat" style="overflow: auto; outline: none;" tabindex="5001">
-          <div class="col-inside-lg decor-default">
-            <div class="chat-body">
-              <h6>Mini Chat</h6>
+          <div class="col-inside-lg decor-default tab-content">
+            <div id="chat-containerX" ng-repeat="x in messages">
+            <div class="chat-body tab-pane" id="{{x[2]}}">
+              <h6>{{x[0]}}</h6>
               <div class="answer left">
                 <div class="avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
@@ -692,6 +496,10 @@ body{
                 <span class="answer-btn answer-btn-2"></span>
               </div>
             </div>
+            </div>
+            
+            
+            
           </div>
         </div>
       </div>
