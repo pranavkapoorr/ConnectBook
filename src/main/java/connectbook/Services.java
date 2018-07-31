@@ -5,6 +5,7 @@
  */
 package connectbook;
 
+import connectbook.Entity.Message;
 import connectbook.Entity.Posts;
 import connectbook.Entity.Users;
 import java.util.List;
@@ -82,6 +83,10 @@ public class Services  {
 	@Transactional
 	public List getChatById(int senderId, int receiverId) {
 		return dao.getChatById(senderId, receiverId);
+	}
+	@Transactional
+	public void sendMessage(Message msg) {
+		dao.createMessage(msg);
 	}
 
 }

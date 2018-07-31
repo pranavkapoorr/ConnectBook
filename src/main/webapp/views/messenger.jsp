@@ -228,9 +228,11 @@ function currentDate() {
               </div>
             
               <div class="answer-add">
+              	<form>
                 <input placeholder="Write a message">
                 <span class="answer-btn answer-btn-1"></span>
                 <span class="answer-btn answer-btn-2"></span>
+                </form>
               </div>
             </div>
           </div>

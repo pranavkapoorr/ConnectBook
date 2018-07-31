@@ -1,5 +1,7 @@
 package connectbook;
 
+import connectbook.Entity.Message;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -121,6 +123,24 @@ public class MainController {
              return list;
     	  }else{
     		  return null;
+    	  }
+     }
+     @RequestMapping(value="/sendMessage",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @ResponseBody
+     public String sendMessage(HttpSession session,@RequestParam("receiveruser")String receiverUser,@RequestParam("message")String message) {
+    	 if(session.getAttribute("username")!=null){
+             Users user = currentUser;
+             Users rUser = Service.getUser(receiverUser);
+             Message msg = new Message();
+             msg.setMsg(message);
+             msg.setMsgBy(user.getId());
+             msg.setMsgMedia("");
+             msg.setMsgTo(rUser.getId());
+             msg.setMsgTime(getCurrentTime());
+             Service.sendMessage(msg);
+             return "sent";
+    	  }else{
+    		  return "session expired";
     	  }
      }
      @RequestMapping(value="/myMessages/{sendername}",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
