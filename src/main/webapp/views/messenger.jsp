@@ -21,7 +21,24 @@
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script type="text/javascript">
-      
+function currentDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hour = d.getHours(),
+        min = d.getMinutes(),
+        sec = d.getSeconds();
+		
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (hour.length < 2) day = '0' + hour;
+    if (min.length < 2) day = '0' + min;
+    if (sec.length < 2) day = '0' + sec;
+
+    return [[day,month,year].join('/'),hour,min,sec].join('-');
+}
+
     var App = angular.module('appX', []);
     App.filter('unique', function() {
     	   // we will return a function which will take in a collection
@@ -71,7 +88,7 @@
              $scope.results = response.statusText;          
                  });
              };
-             
+             $scope.dateTime = currentDate();
              $scope.form = {};
              $scope.getChatX = function(data){
                  $http({
@@ -166,7 +183,7 @@
                     <div class="status online"></div>
                     </div>
                     <div class="name">{{x[0]}}</div>
-                    <div class="mood">User mood</div>
+                    <div class="mood">&nbsp;{{x[3]}}</div>
                     </div>
                 </div>
             </div>
@@ -188,18 +205,22 @@
 		                <div class="text">
 		                  {{c[3]}}
 		                </div>
-		                <div class="time">5 min ago</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))-1===(c[5].substring(0,2))">Yesterday</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))-(c[5].substring(0,2))===0">{{c[5].substring(11,16)}}</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))!==(c[5].substring(0,2))">{{c[5].substring(0,10)}}</div>
 		              </div>
 		              <div ng-if="c[4]!==1" class="answer left">
 		                <div class="avatar">
 		                  <img src="{{c[1]}}" alt="User name">
 		                  <div class="status offline"></div>
 		                </div>
-		                <div class="name">{{c[0]}}</div>
+		                <div class="name" >{{c[0]}}</div>
 		                <div class="text">
 		                  {{c[3]}}
 		                </div>
-		                <div class="time">5 min ago</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))-1===(c[5].substring(0,2))">Yesterday</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))-(c[5].substring(0,2))===0">{{c[5].substring(11,16)}}</div>
+		                <div class="time" ng-if="(dateTime.substring(0,2))!==(c[5].substring(0,2))">{{c[5].substring(0,10)}}</div>
 		              </div>
               </div>
             
