@@ -111,13 +111,27 @@ public class MainController {
     		  return "login";
     	  }
      }
-     @RequestMapping(value="/myMessengerChatHeads",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @RequestMapping(value="/myChatHeads",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody
      public List myChatHeads(HttpSession session) {
     	 if(session.getAttribute("username")!=null){
     		 List list = null;
              Users user = currentUser;
-             list = Service.getMessagesById(user.getId());
+             list = Service.getChatHeadsById(user.getId());
+             return list;
+    	  }else{
+    		  return null;
+    	  }
+     }
+     @RequestMapping(value="/myMessages/{sendername}",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @ResponseBody
+     public List myMessages(HttpSession session,@PathVariable(value="sendername")String senderName) {
+    	 if(session.getAttribute("username")!=null){
+    		 System.err.println("in here with "+ senderName);
+    		 List list = null;
+             Users myUser = currentUser;
+             Users oUser = Service.getUser(senderName);
+             list = Service.getChatById(oUser.getId(),myUser.getId());
              return list;
     	  }else{
     		  return null;
@@ -195,26 +209,6 @@ public class MainController {
     	 List<Users> tempList = Service.getUsers(uname);
         return tempList;
      }
-     
-   /* @RequestMapping(value="/statusMessage", produces = MediaType.TEXT_PLAIN_VALUE)
-    @ResponseBody
-    public String statusMessageFunction() {
-             return "statusMessage"+"\n\n";
-        
-    }
-    @RequestMapping(value="/receipt", produces = MediaType.TEXT_PLAIN_VALUE)
-    @ResponseBody
-    public String receiptFunction() {
-          return "receiptMessage"+"\n\n";
-    }
-    
-    @RequestMapping(value="/payment", method = RequestMethod.POST, produces = MediaType.TEXT_PLAIN_VALUE)
-    @ResponseBody
-    public String payment(@RequestParam(value="terminalIp")String terminalIp,@RequestParam(value = "terminalPort")String terminalPort,
-            @RequestParam(value="amount")String amount, @RequestParam(value="printFlag")String printFlag, @RequestParam(value="GTbit")String GTbit,@RequestParam(value="GTmessage",defaultValue = "none")String GTmessage) throws InterruptedException, JsonProcessingException{
-      
-     
-        return "Payment";
-    }*/
+
 
 }

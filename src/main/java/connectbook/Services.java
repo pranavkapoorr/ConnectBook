@@ -76,8 +76,12 @@ public class Services  {
 		return dao.getConnectionsById(id);
 	}
 	@Transactional
-	public List getMessagesById(int id) {
-		return dao.getMessagesById(id);
+	public List getChatHeadsById(int id) {
+		return dao.getChatHeadsById(id);
+	}
+	@Transactional
+	public List getChatById(int senderId, int receiverId) {
+		return dao.getChatById(senderId, receiverId);
 	}
 
 }

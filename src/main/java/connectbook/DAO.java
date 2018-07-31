@@ -153,12 +153,20 @@ public class DAO {
 		return list_Messages;
 	}
 	
-	public List getMessagesById(int id){
+	public List getChatHeadsById(int id){
 		List list_Messages;
 		Query query = manager.createQuery("select u.name,u.dp,u.username,m.msg, m.msgTo from connectbook.Entity.Message m , connectbook.Entity.Users u where u.id = m.msgBy and m.msgTo = :id or u.id = m.msgTo and m.msgBy = :id");
 		query.setParameter("id", id);
 		list_Messages = query.getResultList();
 		return list_Messages;
 	}
-
+	public List getChatById(int senderId, int receiverId){
+		List list_Messages;
+		Query query = manager.createQuery("select u.name,u.dp,u.username,m.msg, m.msgTo from connectbook.Entity.Message m , "
+				+ "connectbook.Entity.Users u where u.id = m.msgBy , m.msgBy = :sid and m.msgTo = :rid or u.id = m.msgTo , m.msgTo = :rid and m.msgBy = :sid");
+		query.setParameter("sid", senderId);
+		query.setParameter("rid", receiverId);
+		list_Messages = query.getResultList();
+		return list_Messages;
+	}
 }

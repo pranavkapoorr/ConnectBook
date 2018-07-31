@@ -51,10 +51,9 @@
     App.controller("controllerX", function($scope,$interval,$http) {
     	$http({
             method : "POST",
-            url : "/myMessengerChatHeads/"
+            url : "/myChatHeads/"
            }).then(function mySuccess(response) {
-               $scope.messages = response.data;
-               $scope.senders = response.data;
+               $scope.chatheads = response.data;
                }, function myError(response) {
             $scope.messages = response.statusText;          
                 });
@@ -352,9 +351,6 @@ body{
 										width="50px">{{u.name}}</a>
 								</div>
 							</ul>
-							<!-- <div class="thumbnail thumbnail-post" ng-repeat="u in results">
-                      <div><img src="{{u.dp}}" height="50px" width="50px">{{u.name}}</div>
-                        </div>-->
 						</div>
 					</div>
 				</form>
@@ -385,10 +381,10 @@ body{
 	<div class="content container-fluid bootstrap snippets">
       <div class="row row-broken">
         <div class="col-sm-3 col-xs-12">
-          <div class="col-inside-lg decor-default chat" style="overflow: auto; outline: none;" tabindex="5000">
+          <div class="col-inside-lg decor-default chat" style="overflow: auto; outline: none;" >
             <div class="chat-users">
               <h6>Messenger</h6>
-                <div class="user" ng-repeat="x in messages | unique : '0'" >
+                <div class="user" ng-repeat="x in chatheads | unique : '0'" >
                 	<div data-toggle="tab" data-target="{{'#' + x[2]}}">
                     <div class="avatar">
                     <img src="{{x[1]}}" alt="User name">
@@ -401,10 +397,11 @@ body{
             </div>
           </div>
         </div>
-        <div class="col-sm-9 col-xs-12 chat" style="overflow: auto; outline: none;" tabindex="5001">
-          <div class="col-inside-lg decor-default ">
-            <div id="chat-containerX" class="tab-content" ng-repeat="x in messages | unique : '0'"><!-- 0 is the index of element in array for comparison -->
-            <div class="chat-body tab-pane" id="{{x[2]}}">
+        <div class="tab-content">
+        <div id="{{x[2]}}" class="col-sm-9 col-xs-12 chat tab-pane fade" style="overflow: auto; outline: none;" ng-repeat="x in chatheads | unique : '0'">
+          <div class="col-inside-lg decor-default " >
+            <!-- 0 is the index of element in array for comparison -->
+            <div class="chat-body "  >
               <h6>{{x[0]}}</h6>
               <div class="answer left">
                 <div class="avatar">
@@ -522,13 +519,12 @@ body{
                 <span class="answer-btn answer-btn-2"></span>
               </div>
             </div>
-            </div>
-            
-            
-            
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
+    <div></div>
 </body>
 </html>
