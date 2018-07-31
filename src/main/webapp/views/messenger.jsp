@@ -22,11 +22,36 @@
 <script type="text/javascript">
       
     var App = angular.module('appX', []);
-		// create angular controller and pass in $scope and $http
+    App.filter('unique', function() {
+    	   // we will return a function which will take in a collection
+    	   // and a keyname
+    	   return function(collection, keyname) {
+    	      // we define our output and keys array;
+    	      var output = [], 
+    	          keys = [];
+    	      
+    	      // we utilize angular's foreach function
+    	      // this takes in our original collection and an iterator function
+    	      angular.forEach(collection, function(item) {
+    	          // we check to see whether our object exists
+    	          var key = item[keyname];
+    	          // if it's not already part of our keys array
+    	          if(keys.indexOf(key) === -1) {
+    	              // add it to our keys array
+    	              keys.push(key); 
+    	              // push this item to our final output array
+    	              output.push(item);
+    	          }
+    	      });
+    	      // return our array which should be devoid of
+    	      // any duplicates
+    	      return output;
+    	   };
+    	});		
     App.controller("controllerX", function($scope,$interval,$http) {
     	$http({
             method : "POST",
-            url : "/myMessenger/"
+            url : "/myMessengerChatHeads/"
            }).then(function mySuccess(response) {
                $scope.messages = response.data;
                $scope.senders = response.data;
@@ -363,7 +388,7 @@ body{
           <div class="col-inside-lg decor-default chat" style="overflow: auto; outline: none;" tabindex="5000">
             <div class="chat-users">
               <h6>Messenger</h6>
-                <div class="user" ng-repeat="x in messages" >
+                <div class="user" ng-repeat="x in messages | unique : '0'" >
                 	<div data-toggle="tab" data-target="{{'#' + x[2]}}">
                     <div class="avatar">
                     <img src="{{x[1]}}" alt="User name">
@@ -377,8 +402,8 @@ body{
           </div>
         </div>
         <div class="col-sm-9 col-xs-12 chat" style="overflow: auto; outline: none;" tabindex="5001">
-          <div class="col-inside-lg decor-default tab-content">
-            <div id="chat-containerX" ng-repeat="x in messages">
+          <div class="col-inside-lg decor-default ">
+            <div id="chat-containerX" class="tab-content" ng-repeat="x in messages | unique : '0'"><!-- 0 is the index of element in array for comparison -->
             <div class="chat-body tab-pane" id="{{x[2]}}">
               <h6>{{x[0]}}</h6>
               <div class="answer left">

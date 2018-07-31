@@ -111,9 +111,9 @@ public class MainController {
     		  return "login";
     	  }
      }
-     @RequestMapping(value="/myMessenger",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+     @RequestMapping(value="/myMessengerChatHeads",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody
-     public List myMessages(HttpSession session) {
+     public List myChatHeads(HttpSession session) {
     	 if(session.getAttribute("username")!=null){
     		 List list = null;
              Users user = currentUser;
