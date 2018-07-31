@@ -162,8 +162,7 @@ public class DAO {
 	}
 	public List getChatById(int senderId, int receiverId){
 		List list_Messages;
-		Query query = manager.createQuery("select u.name,u.dp,u.username,m.msg, m.msgTo from connectbook.Entity.Message m , "
-				+ "connectbook.Entity.Users u where u.id = m.msgBy , m.msgBy = :sid and m.msgTo = :rid or u.id = m.msgTo , m.msgTo = :rid and m.msgBy = :sid");
+		Query query = manager.createQuery("select distinct u.name,u.dp,u.username,m.msg, m.msgBy, m.msgTime from connectbook.Entity.Message m , connectbook.Entity.Users u where u.id = m.msgBy and m.msgBy = :sid and m.msgTo = :rid or u.id=msgBy and m.msgBy = :rid and m.msgTo = :sid");
 		query.setParameter("sid", senderId);
 		query.setParameter("rid", receiverId);
 		list_Messages = query.getResultList();

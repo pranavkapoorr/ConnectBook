@@ -127,7 +127,6 @@ public class MainController {
      @ResponseBody
      public List myMessages(HttpSession session,@PathVariable(value="sendername")String senderName) {
     	 if(session.getAttribute("username")!=null){
-    		 System.err.println("in here with "+ senderName);
     		 List list = null;
              Users myUser = currentUser;
              Users oUser = Service.getUser(senderName);
