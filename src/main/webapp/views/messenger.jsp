@@ -89,7 +89,6 @@ function currentDate() {
                  });
              };
              $scope.dateTime = currentDate();
-             $scope.form = {};
              $scope.getChatX = function(data){
                  $http({
                   method : "POST",
@@ -101,6 +100,17 @@ function currentDate() {
                   $scope.chatX = response.statusText;          
                       });
                   };
+                  $scope.sendMessage = function(data){
+                      $http({
+                       method : "POST",
+                       url : "/sendMessage/",
+                       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+                      }).then(function mySuccess(response) {
+                          $scope.toast = response.data;
+                          }, function myError(response) {
+                       $scope.toast = response.statusText;          
+                           });
+                       };
   });
 		
   </script>
