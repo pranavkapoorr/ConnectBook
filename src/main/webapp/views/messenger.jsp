@@ -183,7 +183,10 @@ function currentDate() {
                     <div class="status online"></div>
                     </div>
                     <div class="name">{{x[0]}}</div>
-                    <div class="mood">&nbsp;{{x[3]}}</div>
+		           
+		            <div class="mood" ng-if="(dateTime.substring(0,2))-1===(x[4].substring(0,2))">{{x[3]}} Yesterday</div>
+		            <div class="mood" ng-if="(dateTime.substring(0,2))-(x[4].substring(0,2))===0">{{x[3]}} {{x[4].substring(11,16)}}</div>
+		            <div class="mood" ng-if="(dateTime.substring(0,2))!==(x[4].substring(0,2))">{{x[3]}}   {{x[4].substring(0,10)}}</div>
                     </div>
                 </div>
             </div>
