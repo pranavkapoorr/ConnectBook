@@ -15,12 +15,9 @@ import connectbook.Entity.Message;
 import connectbook.Entity.Posts;
 import connectbook.Entity.Users;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
@@ -77,8 +74,19 @@ public class MainController {
      private String getCurrentTime(){
     	 String time = null;
     	 LocalDateTime lTime = LocalDateTime.now();
-    	 time = lTime.getDayOfMonth()+"/"+lTime.getMonth()+"/"+lTime.getYear()+":"+lTime.getHour()+":"+lTime.getMinute()+lTime.getSecond();
+    	 String day = correctFormat(String.valueOf(lTime.getDayOfMonth()));
+    	 String month = correctFormat(String.valueOf(lTime.getMonthValue()));
+    	 String hour = correctFormat(String.valueOf(lTime.getHour()));
+    	 String min = correctFormat(String.valueOf(lTime.getMinute()));
+    	 String sec = correctFormat(String.valueOf(lTime.getSecond()));
+    	 time = day +"/"+month+"/"+lTime.getYear()+":"+hour+":"+min+":"+sec;
     	 return time;
+     }
+     private String correctFormat(String timeString){
+    	 if(timeString.length()<2){
+    		 timeString = "0" + timeString;
+    	 }
+    	 return timeString;
      }
      @RequestMapping(value="/postStatus",method = RequestMethod.POST)
      public String postStatus(HttpSession session,@RequestParam(value="status")String post) {

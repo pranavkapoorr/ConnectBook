@@ -104,6 +104,7 @@ function currentDate() {
                       $http({
                        method : "POST",
                        url : "/sendMessage/",
+                       params : data,
                        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
                       }).then(function mySuccess(response) {
                           $scope.toast = response.data;
@@ -194,9 +195,9 @@ function currentDate() {
                     </div>
                     <div class="name">{{x[0]}}</div>
 		           
-		            <div class="mood" ng-if="(dateTime.substring(0,2))-1===(x[4].substring(0,2))">{{x[3]}} <p style="font-size: 10px;float: right;">Yesterday</p></div>
-		            <div class="mood" ng-if="(dateTime.substring(0,2))-(x[4].substring(0,2))===0">{{x[3]}} <p style="font-size: 10px;float: right;">{{x[4].substring(11,16)}}</p></div>
-		            <div class="mood" ng-if="(dateTime.substring(0,2))!==(x[4].substring(0,2))">{{x[3]}}   <p style="font-size: 10px;float: right;">{{x[4].substring(0,10)}}</p></div>
+		            <div class="mood" style="color: grey" ng-if="(dateTime.substring(0,2))-1===(x[4].substring(0,2))">{{x[3]}} <p style="font-size: 10px;float: right;">Yesterday</p></div>
+		            <div class="mood" style="color: grey" ng-if="(dateTime.substring(0,2))-(x[4].substring(0,2))===0">{{x[3]}} <p style="font-size: 10px;float: right;">{{x[4].substring(11,16)}}</p></div>
+		            <div class="mood" style="color: grey" ng-if="(dateTime.substring(0,2))!==(x[4].substring(0,2))">{{x[3]}}   <p style="font-size: 10px;float: right;">{{x[4].substring(0,10)}}</p></div>
                     </div>
                 </div>
             </div>
@@ -238,10 +239,10 @@ function currentDate() {
               </div>
             
               <div class="answer-add">
-              	<form>
-                <input placeholder="Write a message">
+              	<form ng-submit="sendMessage()" ng-model="me.receiveruser = x[2]">
+                <input type="text"  ng-model="me.message" placeholder="Write a message">
                 <span class="answer-btn answer-btn-1"></span>
-                <span class="answer-btn answer-btn-2"></span>
+                <span class="answer-btn answer-btn-2" ng-click="sendMessage(me)"></span>
                 </form>
               </div>
             </div>
